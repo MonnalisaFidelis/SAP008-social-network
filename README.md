@@ -31,21 +31,34 @@ determinadas tags ou popularidade, mais recente ou mais comentado.
 
 ## 2. Resumo do projeto
 
-Neste projeto você construirá uma Rede Social sobre o que você e sua equipe
-decidirem. Pode ser, por exemplo, sobre alimentação saudável, feminismo,
-educação, saúde, energias renováveis, amantes das
-[Empanadas](https://pt.wikipedia.org/wiki/Empanada), de
-[Tacos](https://pt.wikipedia.org/wiki/Taco_(culin%C3%A1ria)), de
-[Feijoada](https://pt.wikipedia.org/wiki/Feijoada), ou do que seja.
+Este projeto é uma rede social pensada exclusivamente para  público feminino, onde será possível encontrar informações sobre a saúde da mulher/ corpo feminino. Com posts programados de profissionais mulheres (ginecologistas, terapeutas, fisioterapeutas, geriatras, mastologistas, dermatologistas e outras...) de renome na área, a fim de informar e educar mulheres.
 
-Sua Rede Social terá que permitir à qualquer usuário criar uma conta de acesso,
-logar-se com ela, criar, editar, deletar e dar _likes_ em publicações.
+Na rede será possível fazer indicações de profissionais, fazer buscas por profissionais cadastradas e encontrar o contato das mesmas, para agendar consultas.
 
-O objetivo principal de aprendizagem deste projeto é construir uma [Single-page
-Application
-(SPA)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica)
-[_responsiva_](https://curriculum.laboratoria.la/pt/topics/css/02-responsive) (com mais de uma tela/ página) na
-qual seja possível **ler e escrever dados**.
+ Além de interagir com os posts das profissionais, as usuárias poderão poderão postar dúvidas, comentários, e dividir experiências. 
+
+
+
+ Histórias de Usuários
+
+"Como [persona], eu [quero], [para que]."
+
+
+Usuária -  Mulher Ginecologista 
+
+Contexto: Eu como Ginecologista, quero criar posts, para informar a respeito de dúvidas básicas e frequentes e assim  me aproximar das pacientes.
+
+Usuária -  Mulher Idosa  
+
+Contexto: Como uma mulher idosa,  eu busco informações sobre sintomas,  possíveis causas e opções de tratamento, para iniciar tratamento com as devidas profissionais. 
+
+Usuária -  Mulher Mastologista
+
+Contexto: Eu como Mastologista, quero comentar posts, para responder dúvidas de usuárias e pacientes e divulgar meu trabalho.
+
+Usuária -  Mulher Jovem
+
+Contexto: Eu como jovem procuro informações gerais sobre meu corpo, quero curtir e comentar em posts com assuntos que desconheço, além de me conectar a outras mulheres e fazer amizades.
 
 ## 3. Objetivos de aprendizagem
 
