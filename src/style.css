@@ -5,7 +5,7 @@
     margin: 0;
 }
 
-.content{
+.content {
     width: 100%;
     height: 100vh;
     background: rgb(126, 67, 89);
@@ -17,13 +17,13 @@
     font-family: 'Inter', sans-serif;
 }
 
-.content h2{
+.content h2 {
     font-size: 1.2rem;
     font-weight: 500;
     color: #fff;
 }
 
-.title{
+.title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,19 +35,19 @@
     color: #fff;
 }
 
-.logo h1{
+.logo h1 {
     font-size: 2.2rem;
     font-weight: 700;
 }
 
-.logo h3{
+.logo h3 {
     font-size: 1.2rem;
     font-weight: 400;
     color: #fff;
     text-shadow: 0px 6px 3px #2C1026;
 }
 
-.title img{
+.title img {
     width: 5.5rem;
     background-color: #fff;
     border-radius: 5rem;
@@ -55,21 +55,110 @@
 }
 
 .container {
-    width: 40vh;
+    width: 80%;
     height: 32rem;
     background-color: #fff;
+    color: #7E4359;
     box-shadow: 0px 4px 20px 1px #2C1026;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.link-google{
+.link-google {
     text-decoration: none;
     color: #fff;
     background-color: #B85921;
     padding: 0.8rem;
     border-radius: 1rem;
+}
+
+/* Cadastre */
+
+.user-data {
+    width: 80%;
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.user-data label {
+    color: #581A01;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.email,
+.nome,
+.sobrenome,
+.senha {
+    width: 100%;
+    height: 1.6rem;
+    border: none;
+    color: #B85921;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.user-data input {}
+
+::placeholder {
+    color: #B85921;
+    opacity: 0.6;
+}
+
+.user-data hr {
+    width: 100;
+    border: 1px solid #7E4359;
+}
+
+.user-info {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 0.4rem;
+}
+
+.btn-m,
+.btn-p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #B85921;
+    color: #fff;
+    padding: 0.4rem;
+    border-radius: 0.8rem;
+}
+
+.btn-entrar {
+    width: 80%;
+    border: none;
+    background-color: #7E4359;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 1rem;
+}
+
+.btn-entrar:hover {
+    background-color: #2C1026;
+    transition: 0.4s;
+}
+
+.retornar {
+    width: 40%;
+    height: 2rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2C1026;
+    box-shadow: 0px 4px 10px 1px #2C1026;
+    border-radius: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
