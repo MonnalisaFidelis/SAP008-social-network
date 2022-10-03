@@ -1,5 +1,5 @@
 export default () => {
-    const container = document.createElement('div'); 
+    const container = document.createElement('div');
 
     const template = `
         <section class="content">
@@ -13,15 +13,24 @@ export default () => {
             <h2>Entre ou crie uma conta</h2>
             <!-- DIV DO CAMPO DE ENTRAR -->
             <div class="container">
-                <h1>Entrar</h1>
+                <h1 class="descricao-entrar">Entrar</h1>
                 <a href="#google" class="link-google"><i class="fa-brands fa-google"></i> Entrar com o Google</a>
-                <a href="#feed" class="link-entrar">Entrar</a>
+                <p class="descricao-ou">ou</p>
+                <form>
+                        <label>E-mail</label>
+                        <input type="email" name="email" placeholder="user@gmail.com"/>
+                        <div class="linha-horizontal"></div>
+                        <div><label>Senha</label></div>
+                        <input type="password" name="password" placeholder="Senha" />
+                        <div class="linha-horizontal"></div>
+                        <a href="#feed" class="link-entrar">Entrar</a>
+                </form>
             </div>
-
-            <a href= "#cadastre">Nova Conta</a>
+                <a href= "#cadastre" class="link-nova-conta">Nova Conta</a>
+            
         </section> 
     `;
-    container.innerHTML = template; 
+    container.innerHTML = template;
 
     return container;
 
