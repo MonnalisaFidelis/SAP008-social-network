@@ -16,12 +16,12 @@ export default () => {
                 <h1 class="descricao-entrar">Entrar</h1>
                 <a href="#google" class="link-google"><i class="fa-brands fa-google"></i> Entrar com o Google</a>
                 <p class="descricao-ou">ou</p>
-                <form>
+                <form class="user-login">
                         <label>E-mail</label>
-                        <input type="email" name="email" placeholder="user@gmail.com"/>
+                        <input type="email" class="email-login" name="email" placeholder="user@gmail.com"/>
                         <div class="linha-horizontal"></div>
                         <div><label>Senha</label></div>
-                        <input type="password" name="password" placeholder="Senha" />
+                        <input type="password" class="senha-login" name="password" placeholder="Senha" />
                         <div class="linha-horizontal"></div>
                         <a href="#feed" class="link-entrar">Entrar</a>
                 </form>
