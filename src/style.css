@@ -12,14 +12,16 @@
     background: linear-gradient(30deg, rgba(126, 67, 89, 1) 52%, rgba(44, 16, 38, 1) 100%);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 2rem;
     align-items: center;
     font-family: 'Inter', sans-serif;
+
 }
 
 .content h2 {
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 300;
     color: #fff;
 }
 
@@ -45,13 +47,15 @@
     font-weight: 400;
     color: #fff;
     text-shadow: 0px 6px 3px #2C1026;
+    
+    
 }
 
 .title img {
     width: 5.5rem;
     background-color: #fff;
     border-radius: 5rem;
-    padding: 0.5rem;
+    padding: 0.1rem;
 }
 
 .container {
@@ -67,7 +71,19 @@
     align-items: center;
 }
 
-.link-google {
+.descricao-entrar{
+    margin-top: 2rem;
+    color: rgb(126, 67, 89);  
+}
+
+.descricao-ou{
+    font-size: 1.2rem;
+    color: rgb(126, 67, 89);   
+    font-weight: 600;
+}
+
+.link-google{
+    margin-top: 1rem;
     text-decoration: none;
     color: #fff;
     background-color: #B85921;
@@ -75,6 +91,66 @@
     border-radius: 1rem;
 }
 
+.user-login{
+    width: 80%;
+    height: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    align-items: flex-start;
+    color: #581A01;  
+}
+
+.user-login label{
+    color: #581A01; 
+    font-weight: 700; 
+}
+
+.email-login,  .senha-login {
+    height: 1rem;
+    padding: 0.6rem;
+    border: none;
+    color:#B85921;
+}
+
+::placeholder{
+    color:#B85921;
+    font-weight: 500;
+    opacity: 0.6;
+}
+
+.linha-horizontal {
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px  solid rgb(126, 67, 89);
+}
+
+.link-entrar{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 2rem;
+    color: #fff;
+    font-weight: 600;
+    background-color: rgb(126, 67, 89);
+    border-radius: 1rem;
+}
+
+.link-nova-conta{
+    width: 50%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2C1026;
+    border-radius: 1rem;
+}
 /* Cadastre */
 
 .user-data {
@@ -101,13 +177,6 @@
     color: #B85921;
     font-size: 1rem;
     font-weight: 700;
-}
-
-.user-data input {}
-
-::placeholder {
-    color: #B85921;
-    opacity: 0.6;
 }
 
 .user-data hr {
