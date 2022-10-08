@@ -1,6 +1,7 @@
+import { createUser } from "../lib/index.js";
+
 export default () => {
     const container = document.createElement('div');
-
     const template = `
         <section class="content">
             <div class="title">
@@ -16,7 +17,7 @@ export default () => {
                 <h1>Cadastre-se</h1>
                 <form class="user-data">
                     <label for="email">E-mail</label>
-                    <input type="text" class="email" placeholder="user@gmail.com">
+                    <input type="text" class="email" id="email" placeholder="user@gmail.com">
                     <hr>
                     <label for="nome">Nome</label>
                     <input type="text" class="nome" placeholder="Lorem">
@@ -25,27 +26,37 @@ export default () => {
                     <input type="text" class="sobrenome" placeholder="Ipsum">
                     <hr>
                     <label for="senha">Senha</label>
-                    <input type="password" class="senha" placeholder="*****"> 
+                    <input type="password" class="senha"  id="senha" placeholder="*****"> 
                     <hr>
+                    <input type="submit" class="btn-entrar" id="btn-entrar" value="Entrar">
                 </form>
                 <div class="user-info">
                     <div class=btn-m>
                         <input type="radio" id="medica" name="user-info" value="medica">
-                        <label for="medica">Sou Médica</label>
+                        <label for="medica">Sou Médica</label>
                     </div>
                     <div class=btn-p>
                         <input type="radio" id="paciente" name="user-info" value="paciente">
-                        <label for="paciente">Sou paciente</label>
+                        <label for="paciente">Sou paciente</label>
                     </div>
                 </div>
-                <input type="submit" class="btn-entrar" id="btn-entrar" value="Entrar">
             </div>
-
             <a href= "#retornar" class="retornar"><i class="fa-solid fa-arrow-left"></i></a>
         </section>  
     `;
     container.innerHTML = template;
-
+    const form = container.querySelector("form")
+    const email = container.querySelector("#email")
+    const password = container.querySelector("#senha")
+    form.addEventListener("submit" , (e) =>{
+        e.preventDefault()
+        console.log("submeter o form")
+        console.log(email.value)
+        console.log(password.value)
+        /*createUser(email.value, password.value)
+            .then(user =>{
+                console.log(user)
+            })*/
+    })
     return container;
-
 }

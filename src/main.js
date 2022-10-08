@@ -1,6 +1,6 @@
-import login from './pages/login/login.js';
-import feed from './pages/feed/feed.js';
-import cadastre from './pages/cadastre/cadastre.js';
+import login from './pages/login.js';
+import feed from './pages/feed.js';
+import cadastre from './pages/register.js';
 
 
 const main = document.querySelector('#root');
