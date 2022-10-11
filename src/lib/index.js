@@ -1,6 +1,7 @@
-// aqui exportaras las funciones que necesites
+import { getAuth,  createUserWithEmailAndPassword } from "./export.js"; 
+import app from "./config-firebase.js"
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+export function createUser(email, senha){
+const auth = getAuth(app)
+  return createUserWithEmailAndPassword(auth, email, senha) 
+}

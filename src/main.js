@@ -1,6 +1,6 @@
-import login from './pages/login/login.js';
-import feed from './pages/feed/feed.js';
-import cadastre from './pages/cadastre/cadastre.js';
+import login from './pages/login.js';
+import feed from './pages/feed.js';
+import cadastre from './pages/register.js';
 
 
 const main = document.querySelector('#root');
@@ -9,7 +9,7 @@ const init = () => {
     window.addEventListener("hashchange", () => {
         main.innerHTML = " ";
         switch (window.location.hash) {
-            case " ":
+            case "#login":
                 main.appendChild(login());
                 break;
             case "#feed":
@@ -27,6 +27,6 @@ const init = () => {
 window.addEventListener("load", () => {
     main.appendChild(login());
     init();
-})
+})  
 
 
