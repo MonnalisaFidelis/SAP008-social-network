@@ -19,7 +19,7 @@ export default () => {
                 <form class="user-login">
                         <label>E-mail</label>
                         <input type="email" class="email-login" name="email" placeholder="user@gmail.com"/>
-                        <div class="linha-horizontal"></div>
+                        <div class="linha-horizontal"></div> 
                         <div><label>Senha</label></div>
                         <input type="password" class="senha-login" name="password" placeholder="Senha" />
                         <div class="linha-horizontal"></div>

@@ -45,18 +45,19 @@ export default () => {
         </section>  
     `;
     container.innerHTML = template;
-    const form = container.querySelector("form")
+    const btn = container.querySelector("#btn-entrar")
     const email = container.querySelector("#email")
     const password = container.querySelector("#senha")
-    form.addEventListener("submit" , (e) =>{
+    btn.addEventListener("click" , (e) =>{
         e.preventDefault()
         console.log("submeter o form")
         console.log(email.value)
         console.log(password.value)
-        /*createUser(email.value, password.value)
+        createUser(email.value, password.value)
             .then(user =>{
                 console.log(user)
-            })*/
+                alert("Novo Usuario Cadastrado!" )
+            })
     })
     return container;
 }

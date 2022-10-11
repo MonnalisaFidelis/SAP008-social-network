@@ -1,6 +1,4 @@
-export { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-
-export {
+    export {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     getAuth,

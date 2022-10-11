@@ -9,7 +9,7 @@ const init = () => {
     window.addEventListener("hashchange", () => {
         main.innerHTML = " ";
         switch (window.location.hash) {
-            case " ":
+            case "#login":
                 main.appendChild(login());
                 break;
             case "#feed":
@@ -27,6 +27,6 @@ const init = () => {
 window.addEventListener("load", () => {
     main.appendChild(login());
     init();
-})
+})  
 
 
