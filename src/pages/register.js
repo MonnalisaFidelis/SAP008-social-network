@@ -19,12 +19,6 @@ export default () => {
                     <label for="email">E-mail</label>
                     <input type="text" class="email" id="email" placeholder="user@gmail.com">
                     <hr>
-                    <label for="nome">Nome</label>
-                    <input type="text" class="nome" placeholder="Lorem">
-                    <hr>
-                    <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="sobrenome" placeholder="Ipsum">
-                    <hr>
                     <label for="senha">Senha</label>
                     <input type="password" class="senha"  id="senha" placeholder="*****"> 
                     <hr>
@@ -45,19 +39,25 @@ export default () => {
         </section>  
     `;
     container.innerHTML = template;
+
     const btn = container.querySelector("#btn-entrar")
     const email = container.querySelector("#email")
     const password = container.querySelector("#senha")
-    btn.addEventListener("click" , (e) =>{
+    btn.addEventListener("click", (e) => {
         e.preventDefault()
         console.log("submeter o form")
         console.log(email.value)
         console.log(password.value)
         createUser(email.value, password.value)
-            .then(user =>{
+            .then(user => {
                 console.log(user)
-                alert("Novo Usuario Cadastrado!" )
+                alert("Seu cadastro foi realizado com sucesso!")
             })
+            /*.catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert("Falha ao cadastrar")
+            });*/
     })
     return container;
 }

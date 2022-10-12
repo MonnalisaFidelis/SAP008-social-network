@@ -1,3 +1,6 @@
+import { loginUser } from "../lib/index.js";
+
+const main = document.querySelector('#root');
 export default () => {
     const container = document.createElement('div');
 
@@ -18,20 +21,38 @@ export default () => {
                 <p class="descricao-ou">ou</p>
                 <form class="user-login">
                         <label>E-mail</label>
-                        <input type="email" class="email-login" name="email" placeholder="user@gmail.com"/>
+                        <input type="email" class="email-login" id="email" "name="email" placeholder="user@gmail.com"/>
                         <div class="linha-horizontal"></div> 
                         <div><label>Senha</label></div>
-                        <input type="password" class="senha-login" name="password" placeholder="Senha" />
+                        <input type="password" class="senha-login" id="senha" name="password" placeholder="Senha" />
                         <div class="linha-horizontal"></div>
-                        <a href="#feed" class="link-entrar">Entrar</a>
+                        <input type="submit" class="btn-entrar" id="btn-entrar" value="Entrar">
                 </form>
             </div>
-                <a href= "#cadastre" class="link-nova-conta">Nova Conta</a>
+                <a href="#register" class="link-nova-conta">Nova Conta</a>
             
         </section> 
     `;
     container.innerHTML = template;
-
+    const btn = container.querySelector("#btn-entrar")
+    const email = container.querySelector("#email")
+    const password = container.querySelector("#senha")
+    btn.addEventListener("click", (e) => {
+        e.preventDefault()
+        console.log("submeter o form")
+        console.log(email.value)
+        console.log(password.value)
+        loginUser(email.value, password.value)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log("Logou")
+                location.hash = "#feed"
+            })
+            .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            });
+    })
     return container;
-
 }
