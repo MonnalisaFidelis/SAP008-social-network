@@ -2,7 +2,6 @@ import login from './pages/login.js';
 import feed from './pages/feed.js';
 import cadastre from './pages/register.js';
 
-
 const main = document.querySelector('#root');
 
 const init = () => {
@@ -15,7 +14,7 @@ const init = () => {
             case "#feed":
                 main.appendChild(feed());
                 break;
-            case "#cadastre":
+            case "#register":
                 main.appendChild(cadastre());
                 break;
             default:
