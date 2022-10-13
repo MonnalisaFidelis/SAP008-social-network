@@ -48,16 +48,17 @@ export default () => {
         console.log("submeter o form")
         console.log(email.value)
         console.log(password.value)
+        
         createUser(email.value, password.value)
             .then(user => {
                 console.log(user)
                 alert("Seu cadastro foi realizado com sucesso!")
             })
-            /*.catch((error) => {
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 alert("Falha ao cadastrar")
-            });*/
+            })
     })
     return container;
 }
