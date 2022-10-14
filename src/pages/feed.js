@@ -23,7 +23,7 @@ export default () => {
 
     btnPost.addEventListener('click', (e) => {
         post(textPost.value);
-        test();
+        test(textPost.value);
 })
     return container;
 };
