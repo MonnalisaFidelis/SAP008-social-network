@@ -1,6 +1,5 @@
-import { loginUser } from "../lib/index.js";
+import { loginUser} from "../lib/index.js";
 
-const main = document.querySelector('#root');
 export default () => {
     const container = document.createElement('div');
 
@@ -47,12 +46,15 @@ export default () => {
                 // Signed in
                 const user = userCredential.user;
                 console.log("Logou")
+                console.log(user)
                 location.hash = "#feed"
+                //authStateChanged(user)
             })
             .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             });
+        
     })
     return container;
 }
