@@ -1,18 +1,22 @@
-export default (text) => {
-    console.log(text);
+export default (posts) => {
+    console.log(posts);
     const container = document.createElement("div");
-
-    const template = `
+    const template = posts.map(post => {
+        return `
         <div class="post">
             <h4>@user</h4>
-            <p>${text}</p>
+            <p>${post.text}</p>
             <div class="action">
                 <input type="checkbox" value="">
                 <input type="button" value="Comentários">
             </div>
         </div>
     `;
+    }).join("");
 
-    container.innerHTML = template
-    document.getElementById("post-area").appendChild(container);
+    container.innerHTML = template;
+    const postArea = document.getElementById("post-area");
+
+    postArea.innerHTML = "";
+    postArea.appendChild(container);
 }
