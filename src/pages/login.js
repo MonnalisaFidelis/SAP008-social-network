@@ -45,7 +45,7 @@ export default () => {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                console.log("Logou")
+                console.log("logou")
                 console.log(user)
                 location.hash = "#feed"
                 //authStateChanged(user)
