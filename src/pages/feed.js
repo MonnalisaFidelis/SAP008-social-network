@@ -23,13 +23,19 @@ export default () => {
     const textPost = container.querySelector('#text-post');
     const btnPost = container.querySelector('#btn-post');
 
+
     btnPost.addEventListener('click', async (e) => {
-        //post(textPost.value);
         await createPost(textPost.value);
         const posts = await getPosts();
         post(posts)
-        //writeNewPost(user.uid, username, picture, title, body)
     })
+
+    async function listPosts(){
+        const posts = await getPosts();
+        post(posts)
+    }
+
+    listPosts();
 
     btnLogout.addEventListener('click', (e) => {
         console.log("deslogou")
