@@ -17,7 +17,10 @@ export default () => {
                 <h1>Cadastre-se</h1>
                 <form class="user-data">
                     <label for="email">E-mail</label>
-                    <input type="text" class="email" id="email" placeholder="user@gmail.com">
+                    <input type="email" class="email" id="email" placeholder="user@gmail.com">
+                    <hr>
+                    <label for="username">Nome ou Apelido</label>
+                    <input type="text" class="username" id="username" placeholder="Dra Camila">
                     <hr>
                     <label for="senha">Senha</label>
                     <input type="password" class="senha"  id="senha" placeholder="*****"> 
@@ -42,16 +45,18 @@ export default () => {
 
     const btn = container.querySelector("#btn-entrar")
     const email = container.querySelector("#email")
+    const username = container.querySelector("#username")
     const password = container.querySelector("#senha")
     btn.addEventListener("click", (e) => {
         e.preventDefault()
         console.log("submeter o form")
         console.log(email.value)
+        console.log(username.value)
         console.log(password.value)
         
-        createUser(email.value, password.value)
+        createUser(email.value, password.value, username.value)
             .then(user => {
-                console.log(user)
+                console.log(user) 
                 alert("Seu cadastro foi realizado com sucesso!")
             })
             .catch((error) => {
