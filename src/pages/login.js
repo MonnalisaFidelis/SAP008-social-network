@@ -1,4 +1,4 @@
-import { loginUser} from "../lib/index.js";
+import { loginUser, loginGoogle} from "../lib/index.js";
 
 export default () => {
     const container = document.createElement('div');
@@ -16,7 +16,7 @@ export default () => {
             <!-- DIV DO CAMPO DE ENTRAR -->
             <div class="container">
                 <h1 class="descricao-entrar">Entrar</h1>
-                <a href="#google" class="link-google"><i class="fa-brands fa-google"></i> Entrar com o Google</a>
+                <button class="link-google" id="btn-google"><i class="fa-brands fa-google"></i> Entrar com o Google</button>
                 <p class="descricao-ou">ou</p>
                 <form class="user-login">
                         <label>E-mail</label>
@@ -33,10 +33,18 @@ export default () => {
         </section> 
     `;
     container.innerHTML = template;
-    const btn = container.querySelector("#btn-entrar")
+    const btnLogin = container.querySelector("#btn-entrar")
     const email = container.querySelector("#email")
     const password = container.querySelector("#senha")
-    btn.addEventListener("click", (e) => {
+    const btnGoogle = container.querySelector("#btn-google")
+
+    btnGoogle.addEventListener("click", (e) => {
+        e.preventDefault()
+        console.log("google ok")
+        loginGoogle()
+    })
+
+    btnLogin.addEventListener("click", (e) => {
         e.preventDefault()
         console.log("submeter o form")
         console.log(email.value)
@@ -56,5 +64,6 @@ export default () => {
             });
         
     })
+
     return container;
 }

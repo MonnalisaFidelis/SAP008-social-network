@@ -1,7 +1,8 @@
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "./export.js"; 
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile} from "./export.js"; 
 import { app } from "./config-firebase.js"
 import { getFirestore, doc, getDocs, query, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { getDatabase, ref, child, push, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+
 
 export async function getPosts(){
   const db = getFirestore(app)
@@ -16,9 +17,29 @@ export async function getPosts(){
 }
 
 // função de criação de usuário
-export function createUser(email, senha){
+export function createUser(email, senha, name){
 const auth = getAuth(app)
   return createUserWithEmailAndPassword(auth, email, senha) 
+    .then(()=>updateProfile(auth.correntUser, {
+      displayName: name, 
+    }))
+}
+
+//função de login com Google
+export function loginGoogle(){
+  const provider = new GoogleAuthProvider(); 
+  const auth = getAuth();
+signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  });
 }
 
 // função de login do usuário
