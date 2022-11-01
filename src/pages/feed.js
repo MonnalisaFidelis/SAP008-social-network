@@ -1,5 +1,5 @@
 import post from '../components/post.js';
-import { createPost, getPosts, userStateChanged, userStateLogout, writeNewPost } from '../lib/index.js';
+import { createPost, getPosts, userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {
     const container = document.createElement('div'); 
@@ -11,7 +11,7 @@ export default () => {
             <div class="novo-post">
             <label for="text-post">Novo Post:</label>
             <textarea id="text-post" name="story" rows="5" cols="33"></textarea>
-            <button class="btn-post" id="btn-post"><i class="fa-solid fa-plus"></i></button>
+            <button type="submit" class="btn-post" id="btn-post"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="post-area">
             </div>
@@ -41,6 +41,5 @@ export default () => {
         console.log("deslogou")
         userStateLogout(userStateChanged);
     })
-
     return container;
 };

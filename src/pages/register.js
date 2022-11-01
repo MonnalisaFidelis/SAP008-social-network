@@ -54,7 +54,7 @@ export default () => {
         console.log(username.value)
         console.log(password.value)
         
-        createUser(email.value, password.value, username.value)
+        createUser(username.value, email.value, password.value)
             .then(user => {
                 console.log(user) 
                 alert("Seu cadastro foi realizado com sucesso!")

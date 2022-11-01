@@ -7,15 +7,15 @@ const main = document.querySelector('#root');
 
 function redirectAuthUser(user) {
     if (user) {
-    window.location.hash = '#feed';
+        window.location.hash = '#feed';
     } else {
-    window.location.hash = '#login';
+        window.location.hash = '#login';
     }
 }
 
 const init = () => {
     window.addEventListener("hashchange", () => {
-        main.innerHTML = " ";
+        main.innerHTML = '';
         switch (window.location.hash) {
             case "#login":
                 main.appendChild(login());
@@ -33,7 +33,6 @@ const init = () => {
 }
 
 window.addEventListener("load", () => {
-    //main.appendChild(login());
     userStateChanged(redirectAuthUser);
     init();
 })  

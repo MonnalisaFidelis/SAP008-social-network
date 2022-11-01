@@ -17,12 +17,12 @@ export async function getPosts(){
 }
 
 // função de criação de usuário
-export function createUser(email, senha, name){
-const auth = getAuth(app)
+export function createUser(name, email, senha){
+const auth = getAuth(app);
   return createUserWithEmailAndPassword(auth, email, senha) 
-    .then(()=>updateProfile(auth.correntUser, {
+    .then(() => updateProfile(auth.currentUser, {
       displayName: name, 
-    }))
+    }));
 }
 
 //função de login com Google
@@ -51,11 +51,15 @@ export function loginUser(email, senha){
 // função para adicionar itens no banco
 export async function createPost(text){
   const db = getFirestore(app)
+  const auth = getAuth(app)
 
   try {
     const postRef = collection(db, "posts")
     const docRef = await addDoc(postRef, {
-      text: text
+      name: auth.currentUser.displayName,
+      author: auth.currentUser.uid,
+      text: text,
+      like: [],
     })
     console.log("Document written with ID: ", docRef.id);
   } 
@@ -63,6 +67,22 @@ export async function createPost(text){
     console.error("Error adding document: ", e);
   }
 };
+
+/*
+export async function deletePost(){
+  const db = getFirestore(app)
+  const auth = getAuth(app)
+
+  try{
+  const postRef = collection(db, "posts")
+  const docRef = await deleteDoc(doc(postRef, auth.currentUser.uid));
+  console.log(docRef);
+  }
+  catch{
+    console.log("deu ruim")
+  }
+};
+*/
 
 // função para manter o usuário logado
 export function userStateChanged(callback){
@@ -77,26 +97,4 @@ export function userStateLogout(callback){
   signOut(auth).then(() => {
   }).catch((error) => {
   });
-}
-
-export function writeNewPost(uid, username, picture, title, body) {
-  const db = getDatabase();
-
-  // A post entry.
-  const postData = {
-    author: username,
-    uid: uid,
-    body: body,
-    title: title,
-    starCount: 0,
-    authorPic: picture
-  };
-
-  const newPostKey = push(child(ref(db), 'posts')).key;
-
-  const updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-  return update(ref(db), updates);
 }
