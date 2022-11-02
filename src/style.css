@@ -25,16 +25,29 @@
     color: #fff;
 }
 
+.create{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
 .title {
+    width: 100%;    
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    justify-content: center;
+
 }
 
 .logo {
     width: 9rem;
     color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo h1 {
@@ -47,8 +60,6 @@
     font-weight: 400;
     color: #fff;
     text-shadow: 0px 6px 3px #2C1026;
-    
-    
 }
 
 .title img {
@@ -58,9 +69,18 @@
     padding: 0.1rem;
 }
 
-.container {
+.home{
     width: 80%;
     height: 32rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container {
+    width: 100%;
+    height: 28rem;
     background-color: #fff;
     color: #7E4359;
     box-shadow: 0px 4px 20px 1px #2C1026;
@@ -203,8 +223,18 @@
     border-radius: 0.8rem;
 }
 
+.btn-enter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.username{
+border: none;
+}
+
 .btn-entrar {
-    width: 80%;
+    width: 100%;
     border: none;
     background-color: #7E4359;
     color: #fff;
@@ -233,21 +263,26 @@
     align-items: center;
 }
 
-.novo-post{
-    width: 90%;
-    height: 10rem;
-    background-color: tomato;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.feed-container{
-    background-color: aqua;
-    width: 100%;
-    /*height: 100vh;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media  (min-width: 600px) {
+    .create{
+        width: 25%;
+    }
+    .title {
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo{
+        align-items: center;
+    }
+    .content{
+        flex-direction: row;
+        gap: 5rem;
+    } 
+    .home{
+        width: 30rem;
+        height: 32rem;
+    }
+    .logo h3 {
+        width: 15rem;
+    }
 }
