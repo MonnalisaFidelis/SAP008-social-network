@@ -4,16 +4,19 @@ export default () => {
     const container = document.createElement('div');
     const template = `
         <section class="content">
-            <div class="title">
-                <div class="logo">
-                    <h1>MCMR</h1>
-                    <h3>Meu Corpo Minhas Regras</h3>
+            <div class= "create">  
+                <div class="title">
+                    <img src="./img/logo.png">
+                    <div class="logo">
+                        <h1>MCMR</h1>
+                        <h3>Meu Corpo Minhas Regras</h3>
+                    </div>
                 </div>
-                <img src="./img/logo.png">
+                <h2>Crie uma conta</h2>
             </div>
-            <h2>Crie uma conta</h2>
             <!-- DIV DO CAMPO DE ENTRAR -->
-            <div class="container">
+            <div class = "home">
+                <div class="container">
                 <h1>Cadastre-se</h1>
                 <form class="user-data">
                     <label for="email">E-mail</label>
@@ -39,6 +42,7 @@ export default () => {
                 </div>
             </div>
             <a href= "#retornar" class="retornar"><i class="fa-solid fa-arrow-left"></i></a>
+            </div>
         </section>  
     `;
     container.innerHTML = template;
