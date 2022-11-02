@@ -1,0 +1,122 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.feed-title{
+    width: 100%;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.feed-title h3{
+    color: #7E4359;
+    font-size: 0.6rem;
+    font-weight: 500;
+}
+
+.feed-title .btn-logout {
+    background-color: #fff;
+    border: none;
+    color: #7E4359;
+    font-size: 1.2rem;
+}
+
+.feed-logo{
+    color:#2C1026;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.feed-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feed-novo-post{
+    width: 80%;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.feed-novo-post .feed-text-box{
+    width: 90%;
+    height: 6rem;
+    outline: none;
+    resize: none;
+    border: 0.2rem solid #7E4359;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    color: #B85921;
+    font-size: 1rem;
+}
+
+.feed-novo-post .feed-btn-post {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: #7E4359;
+    color: #fff;
+    border-radius: 0.4rem;
+}
+
+.feed-logo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.feed-logo img{
+    width: 4rem;
+}
+
+#post-area{
+    width: 70%;
+}
+
+.post{
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    box-shadow: #7E4359 0px 4px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.post h4 {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #B85921;
+}
+
+.post p {
+    width: 100%;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #2C1026;
+}
+
+.post-action{
+    color: #7E4359;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post-action .btn-delete{
+    border: none;
+    background-color: #fff;
+    color: #7E4359;
+    font-size: 1rem;
+}

@@ -2,22 +2,27 @@ import post from '../components/post.js';
 import { createPost, getPosts, userStateChanged, userStateLogout } from '../lib/index.js';
 
 export default () => {
-    const container = document.createElement('div'); 
+    const container = document.createElement('div');
 
     const template = `
-        <h1> Feed </h1>
-        <button id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+        <div class="feed-title">
+            <h3>Feed</h3>
+            <button id="btn-logout" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </div>
+        <div class="feed-logo">
+            <h1>MCMR</h1>
+            <img src="../img/logo.png" alt="logo Meu Corpo Minhas Regras">
+        </div>
         <section class="feed-container" id="feed-container">
-            <div class="novo-post">
-            <label for="text-post">Novo Post:</label>
-            <textarea id="text-post" name="story" rows="5" cols="33"></textarea>
-            <button type="submit" class="btn-post" id="btn-post"><i class="fa-solid fa-plus"></i></button>
+            <div class="feed-novo-post">
+                <textarea class="feed-text-box" id="text-post" placeholder="Escreva aqui um novo post..." name="story" rows="5" cols="33"></textarea>
+                <button type="submit" class="feed-btn-post" id="btn-post"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div id="post-area">
             </div>
         </section>
     `;
-    container.innerHTML = template; 
+    container.innerHTML = template;
 
     const btnLogout = container.querySelector('#btn-logout')
     const textPost = container.querySelector('#text-post');
@@ -30,7 +35,7 @@ export default () => {
         post(posts)
     })
 
-    async function listPosts(){
+    async function listPosts() {
         const posts = await getPosts();
         post(posts)
     }
