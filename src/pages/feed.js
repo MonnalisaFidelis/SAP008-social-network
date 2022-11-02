@@ -37,6 +37,8 @@ export default () => {
 
     listPosts();
 
+    
+
     btnLogout.addEventListener('click', (e) => {
         console.log("deslogou")
         userStateLogout(userStateChanged);

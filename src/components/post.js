@@ -4,10 +4,10 @@ import { app } from '../lib/config-firebase.js';
 const auth = getAuth(app);
 
 export default (posts) => {
-        console.log(posts);
-        const container = document.createElement("div");
-        const template = posts.map(post => {
-            return `
+    console.log(posts);
+    const container = document.createElement("div");
+    const template = posts.map(post => {
+        return `
             <div class="post">
                 <h4>@${post.name}</h4>
                 <p>${post.text}</p>
@@ -17,17 +17,19 @@ export default (posts) => {
                 </div>
             </div>
         `;
-        }).join("");
+    }).join("");
 
     container.innerHTML = template;
     const postArea = document.getElementById('post-area');
-
     postArea.innerHTML = "";
     postArea.appendChild(container);
 
-    const btnLike = document.getElementById('btn-like');
-    console.log(btnLike)
-    
+    const btnDelete = document.getElementById('btn-delete');
+
+    btnDelete.addEventListener('click', (elem) => {
+        console.log('deletou')
+    })
+    /*
     btnLike.addEventListener('change', (e) => {
         const postId = e.target.dataset.id;
         const userId = e.target.dataset.author;
@@ -36,4 +38,5 @@ export default (posts) => {
             console.log(userId);
         }
     })
+    */
 }
