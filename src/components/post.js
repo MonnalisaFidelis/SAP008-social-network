@@ -6,13 +6,17 @@ const auth = getAuth(app);
 export default (posts) => {
     console.log(posts);
     const container = document.createElement("div");
+    container.setAttribute("class", "post-render");
     const template = posts.map(post => {
         return `
             <div class="post">
                 <h4>@${post.name}</h4>
                 <p>${post.text}</p>
-                <div class="action">
-                    <input type="checkbox" class="btn-likey" id="btn-like" data-id="${post.id}" data-author="${post.author}">
+                <div class="post-action">
+                    <div class="post-like">
+                        <input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">
+                        <span class="counter-like">13</span>
+                    </div>
                     <button type="button" class="btn-delete" id="btn-delete" value=""><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             </div>
