@@ -1,6 +1,6 @@
 # Criando uma Rede Social
 
-Deploy: https://monnalisafidelis.github.io/SAP008-social-network/src/index.html
+Deploy do projeto: https://monnalisafidelis.github.io/SAP008-social-network/src/index.html
 
 ## Índice
 
