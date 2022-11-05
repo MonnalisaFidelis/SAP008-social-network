@@ -1,9 +1,6 @@
-import { getAuth } from '../lib/export.js';
-import { app } from '../lib/config-firebase.js';
+import { getPosts, deletePost } from '../lib/index.js';
 
-const auth = getAuth(app);
-
-export default (posts) => {
+export default (posts, text) => {
     console.log(posts);
     const container = document.createElement("div");
     container.setAttribute("class", "post-render");
@@ -17,7 +14,10 @@ export default (posts) => {
                         <input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">
                         <span class="counter-like">13</span>
                     </div>
-                    <button type="button" class="btn-delete" id="btn-delete" value=""><i class="fa-solid fa-trash-can"></i></button>
+                    <div class="post-actions">
+                    <button type="button" class="btn-edit" id="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-delete" id="btn-delete"><i class="fa-solid fa-trash-can" data-id="${post.id}"></i></button>
+                    </div>
                 </div>
             </div>
         `;
@@ -28,19 +28,25 @@ export default (posts) => {
     postArea.innerHTML = "";
     postArea.appendChild(container);
 
-    const btnDelete = document.getElementById('btn-delete');
+    const btnLike = document.getElementById('btn-like')
+    const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
 
-    btnDelete.addEventListener('click', (elem) => {
-        console.log('deletou')
+    console.log(btnDelete);
+    btnDelete.forEach((element)=> {
+        element.addEventListener('click', (e) => {
+            const postId = e.target.dataset.id;
+            deletePost(postId)
+            
+        })
     })
-    /*
+
     btnLike.addEventListener('change', (e) => {
         const postId = e.target.dataset.id;
         const userId = e.target.dataset.author;
-        if(btnLike.checked){
-            console.log("true", postId);
+        if (btnLike.checked) {
+            document.getElementById('campo').value = ''
+            console.log("true", postId); // modificar a array do doc (arrayuni)
             console.log(userId);
         }
     })
-    */
 }

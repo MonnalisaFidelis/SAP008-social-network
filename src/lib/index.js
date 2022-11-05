@@ -68,21 +68,13 @@ export async function createPost(text){
   }
 };
 
-/*
-export async function deletePost(){
+// função para deletar o post
+export async function deletePost(postId){
+  console.log(postId);
   const db = getFirestore(app)
-  const auth = getAuth(app)
-
-  try{
-  const postRef = collection(db, "posts")
-  const docRef = await deleteDoc(doc(postRef, auth.currentUser.uid));
-  console.log(docRef);
-  }
-  catch{
-    console.log("deu ruim")
-  }
+  await deleteDoc(doc(db, "posts", postId));
+  console.log('deletou')
 };
-*/
 
 // função para manter o usuário logado
 export function userStateChanged(callback){
