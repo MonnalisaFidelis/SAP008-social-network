@@ -4,6 +4,7 @@ import { getFirestore, doc, getDocs, query, setDoc, collection, addDoc, updateDo
 import { getDatabase, ref, child, push, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
 
 
+
 export async function getPosts(){
   const db = getFirestore(app)
   const q = query(collection(db, "posts")); // query = pesquisa
@@ -59,13 +60,24 @@ export async function createPost(text){
       name: auth.currentUser.displayName,
       author: auth.currentUser.uid,
       text: text,
-      like: [],
+      like: 0,
     })
     console.log("Document written with ID: ", docRef.id);
   } 
   catch (e) {
     console.error("Error adding document: ", e);
   }
+};
+
+//função like
+export async function likePost(postId, like){
+  console.log("alterar bco");
+  console.log(like);
+  const db = getFirestore(app)
+  const docRef = doc(db, "posts", postId);
+  await updateDoc(docRef, {
+    "like": like,  
+});
 };
 
 // função para deletar o post

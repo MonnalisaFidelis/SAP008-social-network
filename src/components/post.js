@@ -1,4 +1,4 @@
-import { getPosts, deletePost } from '../lib/index.js';
+import { getPosts, deletePost, likePost } from '../lib/index.js';
 
 export default (posts, text) => {
     console.log(posts);
@@ -11,8 +11,9 @@ export default (posts, text) => {
                 <p>${post.text}</p>
                 <div class="post-action">
                     <div class="post-like">
-                        <input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">
-                        <span class="counter-like">13</span>
+                        <!--<input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">-->
+                        <button type= "button"  class="btn-like" id="btn-like"  data-author="${post.author}"><i class="fa-solid fa-heart" data-id="${post.id}" data-like="${post.like}"></i></button>
+                        <span class="counter-like">${post.like}</span>
                     </div>
                     <div class="post-actions">
                     <button type="button" class="btn-edit" id="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -28,19 +29,37 @@ export default (posts, text) => {
     postArea.innerHTML = "";
     postArea.appendChild(container);
 
-    const btnLike = document.getElementById('btn-like')
+    const btnLike = document.querySelectorAll('.btn-like');
     const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
+
+    console.log(btnLike);
+    btnLike.forEach((element)=> {
+        element.addEventListener('click', (e) => {
+            const postId = e.target.dataset.id;
+            const postLike = e.target.dataset.like;
+            let like= 0;
+            if(postLike>=0){
+                like=like+1
+            }
+            console.log("deu like");
+            console.log(postId);
+
+            likePost(postId, like);
+        })
+    })
+
+
 
     console.log(btnDelete);
     btnDelete.forEach((element)=> {
         element.addEventListener('click', (e) => {
             const postId = e.target.dataset.id;
-            deletePost(postId)
+            deletePost(postId);
             
         })
     })
 
-    btnLike.addEventListener('change', (e) => {
+   /* btnLike.addEventListener('change', (e) => {
         const postId = e.target.dataset.id;
         const userId = e.target.dataset.author;
         if (btnLike.checked) {
@@ -48,5 +67,5 @@ export default (posts, text) => {
             console.log("true", postId); // modificar a array do doc (arrayuni)
             console.log(userId);
         }
-    })
+    })*/
 }

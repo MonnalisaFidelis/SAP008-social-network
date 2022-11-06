@@ -114,9 +114,10 @@
     justify-content: space-between;
 }
 
-.post-action .btn-edit, .btn-delete{
+.post-action .btn-edit, .btn-delete, .btn-like{
     border: none;
     background-color: #fff;
     color: #7E4359;
     font-size: 1rem;
+    cursor: pointer;
 }
