@@ -114,7 +114,7 @@
     justify-content: space-between;
 }
 
-.post-action .btn-delete{
+.post-action .btn-edit, .btn-delete{
     border: none;
     background-color: #fff;
     color: #7E4359;
