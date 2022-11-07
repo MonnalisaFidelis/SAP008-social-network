@@ -41,7 +41,7 @@ export default () => {
                     </div>
                 </div>
             </div>
-            <a href= "#retornar" class="retornar"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="#login" class="retornar"><i class="fa-solid fa-arrow-left"></i></a>
             </div>
         </section>  
     `;

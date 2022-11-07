@@ -1,4 +1,4 @@
-import { getPosts, deletePost } from '../lib/index.js';
+import { getPosts, deletePost, likePost, editPost } from '../lib/index.js';
 
 export default (posts, text) => {
     console.log(posts);
@@ -11,11 +11,12 @@ export default (posts, text) => {
                 <p>${post.text}</p>
                 <div class="post-action">
                     <div class="post-like">
-                        <input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">
-                        <span class="counter-like">13</span>
+                        <!--<input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">-->
+                        <button type= "button"  class="btn-like" id="btn-like"  data-author="${post.author}"><i class="fa-solid fa-heart" data-id="${post.id}" data-like="${post.like}"></i></button>
+                        <span class="counter-like">${post.like}</span>
                     </div>
                     <div class="post-actions">
-                    <button type="button" class="btn-edit" id="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-edit" id="btn-edit"><i class="fa-solid fa-pen-to-square" data-id="${post.id}"></i></button>
                     <button type="button" class="btn-delete" id="btn-delete"><i class="fa-solid fa-trash-can" data-id="${post.id}"></i></button>
                     </div>
                 </div>
@@ -28,25 +29,57 @@ export default (posts, text) => {
     postArea.innerHTML = "";
     postArea.appendChild(container);
 
-    const btnLike = document.getElementById('btn-like')
+    const btnLike = document.querySelectorAll('.btn-like');
+    const btnEdit = document.querySelectorAll('.btn-edit');
     const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
 
-    console.log(btnDelete);
-    btnDelete.forEach((element)=> {
+    console.log(btnLike);
+    btnLike.forEach((element) => {
         element.addEventListener('click', (e) => {
             const postId = e.target.dataset.id;
-            deletePost(postId)
-            
+            const postLike = e.target.dataset.like;
+            console.log(postLike)
+            console.log("deu like");
+            console.log(postId);
+
+            likePost(postId)
+            .then((result) => {
+                document.location.reload(true);
+            }).catch((error) => {
+                console.log("deu ruim")
+            });
         })
     })
 
-    btnLike.addEventListener('change', (e) => {
-        const postId = e.target.dataset.id;
-        const userId = e.target.dataset.author;
-        if (btnLike.checked) {
-            document.getElementById('campo').value = ''
-            console.log("true", postId); // modificar a array do doc (arrayuni)
-            console.log(userId);
-        }
+    //editar
+    console.log(btnEdit)
+    btnEdit.forEach((element) => {
+        element.addEventListener('click', (e) => {
+            const postId = e.target.dataset.id;
+            const textEdit = prompt("Edite seu post")
+            console.log("editar")
+            console.log(textEdit)
+
+            editPost(postId, textEdit)
+            .then((result) => {
+                document.location.reload(true);
+            }).catch((error) => {
+                console.log("deu ruim no edit")
+            });
+        })
+    })
+
+    //deletar
+    console.log(btnDelete);
+    btnDelete.forEach((element) => {
+        element.addEventListener('click', (e) => {
+            const postId = e.target.dataset.id;
+            deletePost(postId)
+            .then((result) => {
+                document.location.reload(true);
+            }).catch((error) => {
+                console.log("deu ruim no delete")
+            });
+        })
     })
 }

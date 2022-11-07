@@ -1,6 +1,6 @@
 import login from './pages/login.js';
 import feed from './pages/feed.js';
-import cadastre from './pages/register.js';
+import register from './pages/register.js';
 import {userStateChanged} from './lib/index.js'
 
 const main = document.querySelector('#root');
@@ -13,28 +13,28 @@ function redirectAuthUser(user) {
     }
 }
 
-const init = () => {
-    window.addEventListener("hashchange", () => {
-        main.innerHTML = '';
-        switch (window.location.hash) {
-            case "#login":
-                main.appendChild(login());
-                break;
-            case "#feed":
-                main.appendChild(feed());
-                break;
-            case "#register":
-                main.appendChild(cadastre());
-                break;
-            default:
-                main.appendChild(login());
+function init(){
+    main.innerHTML = '';
+    switch (window.location.hash) {
+        case '#login':
+            main.appendChild(login());
+            break;
+        case '#feed':
+            main.appendChild(feed());
+            break;
+        case '#register':
+            main.appendChild(register());
+            break;
+        default:
+            main.appendChild(login());
         }
-    })
 }
 
+window.addEventListener('hashchange', init)
+
 window.addEventListener("load", () => {
-    userStateChanged(redirectAuthUser);
     init();
+    userStateChanged(redirectAuthUser);
 })  
 
 
