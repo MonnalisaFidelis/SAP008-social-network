@@ -3,8 +3,6 @@ import { app } from "./config-firebase.js"
 import { getFirestore, doc, getDocs, query, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { getDatabase, ref, child, push, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
 
-
-
 export async function getPosts(){
   const db = getFirestore(app)
   const q = query(collection(db, "posts")); // query = pesquisa
@@ -69,17 +67,23 @@ export async function createPost(text){
   }
 };
 
-//função like
-export async function likePost(postId, like){
-  console.log("alterar bco");
-  console.log(like);
+// função like
+export async function likePost(postId){
   const db = getFirestore(app)
   const docRef = doc(db, "posts", postId);
   await updateDoc(docRef, {
-    "like": like,  
-});
+    "like": 1,  
+  });
 };
 
+// função editar o post
+export async function editPost(postId, textEdit){
+  const db = getFirestore(app)
+  const docRef = doc(db, "posts", postId);
+  await updateDoc(docRef, {
+    "text": textEdit,
+  });
+}
 // função para deletar o post
 export async function deletePost(postId){
   console.log(postId);
