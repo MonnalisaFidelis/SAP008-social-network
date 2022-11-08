@@ -30,9 +30,14 @@ export default () => {
 
 
     btnPost.addEventListener('click', async (e) => {
-        await createPost(textPost.value);
-        const posts = await getPosts();
-        post(posts)
+        if(textPost.value === ''){
+            alert("Post vazio, por favor digite algo!")
+        }
+        else{
+            await createPost(textPost.value);
+            const posts = await getPosts();
+            post(posts)
+        }
     })
 
     async function listPosts() {
