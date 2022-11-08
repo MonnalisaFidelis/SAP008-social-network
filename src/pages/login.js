@@ -1,4 +1,4 @@
-import { loginUser, loginGoogle} from "../lib/index.js";
+import { loginUser, loginGoogle } from "../lib/index.js";
 
 export default () => {
     const container = document.createElement('div');
@@ -51,24 +51,20 @@ export default () => {
 
     btnLogin.addEventListener("click", (e) => {
         e.preventDefault()
-        console.log("submeter o form")
         console.log(email.value)
         console.log(password.value)
         loginUser(email.value, password.value)
             .then((userCredential) => {
-                // Signed in
                 const user = userCredential.user;
-                console.log("logou")
                 console.log(user)
                 location.hash = "#feed"
-                //authStateChanged(user)
             })
             .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+                alert("Email ou senha inválidos")
+                //const errorCode = error.code;
+                //const errorMessage = error.message;
             });
         
     })
-
     return container;
 }

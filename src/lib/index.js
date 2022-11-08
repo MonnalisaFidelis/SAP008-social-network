@@ -1,7 +1,6 @@
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile} from "./export.js"; 
 import { app } from "./config-firebase.js"
-import { getFirestore, doc, getDocs, query, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-import { getDatabase, ref, child, push, update } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+import { getFirestore, doc, getDocs, query, collection, addDoc, updateDoc, deleteDoc, increment } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
 export async function getPosts(){
   const db = getFirestore(app)
@@ -31,13 +30,13 @@ export function loginGoogle(){
 signInWithPopup(auth, provider)
   .then((result) => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
+    //const token = credential.accessToken;
+    //const user = result.user;
   }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    //const errorCode = error.code;
+    //const errorMessage = error.message;
+    //const email = error.customData.email;
+    //const credential = GoogleAuthProvider.credentialFromError(error);
   });
 }
 
@@ -58,7 +57,7 @@ export async function createPost(text){
       name: auth.currentUser.displayName,
       author: auth.currentUser.uid,
       text: text,
-      like: 0,
+      like: [],
     })
     console.log("Document written with ID: ", docRef.id);
   } 
@@ -72,7 +71,7 @@ export async function likePost(postId){
   const db = getFirestore(app)
   const docRef = doc(db, "posts", postId);
   await updateDoc(docRef, {
-    "like": 1,  
+    like: increment(1),
   });
 };
 
@@ -89,12 +88,10 @@ export async function deletePost(postId){
   console.log(postId);
   const db = getFirestore(app)
   await deleteDoc(doc(db, "posts", postId));
-  console.log('deletou')
 };
 
 // função para manter o usuário logado
 export function userStateChanged(callback){
-  console.log("vai ficar logado");
     const auth = getAuth(app);
     onAuthStateChanged(auth, callback);
 }
@@ -102,7 +99,9 @@ export function userStateChanged(callback){
 // função para deslogar o usuário
 export function userStateLogout(callback){
   const auth = getAuth();
-  signOut(auth).then(() => {
-  }).catch((error) => {
+  signOut(auth)
+  .then(() => {
+  })
+  .catch((error) => {
   });
 }

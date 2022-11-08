@@ -66,6 +66,7 @@
     background-color: #7E4359;
     color: #fff;
     border-radius: 0.4rem;
+    cursor: pointer;
 }
 
 .feed-logo{

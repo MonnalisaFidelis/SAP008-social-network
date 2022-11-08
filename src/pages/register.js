@@ -64,8 +64,8 @@ export default () => {
                 alert("Seu cadastro foi realizado com sucesso!")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                //const errorCode = error.code;
+                //const errorMessage = error.message;
                 alert("Falha ao cadastrar")
             })
     })

@@ -1,6 +1,6 @@
 import { getPosts, deletePost, likePost, editPost } from '../lib/index.js';
 
-export default (posts, text) => {
+export default (posts) => {
     console.log(posts);
     const container = document.createElement("div");
     container.setAttribute("class", "post-render");
@@ -12,7 +12,7 @@ export default (posts, text) => {
                 <div class="post-action">
                     <div class="post-like">
                         <!--<input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">-->
-                        <button type= "button"  class="btn-like" id="btn-like"  data-author="${post.author}"><i class="fa-solid fa-heart" data-id="${post.id}" data-like="${post.like}"></i></button>
+                        <button type= "button"  class="btn-like" id="btn-like"><i class="fa-solid fa-heart" data-id="${post.id}" data-like="${post.like}"></i></button>
                         <span class="counter-like">${post.like}</span>
                     </div>
                     <div class="post-actions">
@@ -33,14 +33,10 @@ export default (posts, text) => {
     const btnEdit = document.querySelectorAll('.btn-edit');
     const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
 
-    console.log(btnLike);
     btnLike.forEach((element) => {
         element.addEventListener('click', (e) => {
             const postId = e.target.dataset.id;
-            const postLike = e.target.dataset.like;
-            console.log(postLike)
-            console.log("deu like");
-            console.log(postId);
+            const postAuthor = e.target.dataset.author;
 
             likePost(postId)
             .then((result) => {
@@ -52,13 +48,10 @@ export default (posts, text) => {
     })
 
     //editar
-    console.log(btnEdit)
     btnEdit.forEach((element) => {
         element.addEventListener('click', (e) => {
             const postId = e.target.dataset.id;
             const textEdit = prompt("Edite seu post")
-            console.log("editar")
-            console.log(textEdit)
 
             editPost(postId, textEdit)
             .then((result) => {
@@ -70,16 +63,18 @@ export default (posts, text) => {
     })
 
     //deletar
-    console.log(btnDelete);
     btnDelete.forEach((element) => {
         element.addEventListener('click', (e) => {
             const postId = e.target.dataset.id;
-            deletePost(postId)
-            .then((result) => {
-                document.location.reload(true);
-            }).catch((error) => {
-                console.log("deu ruim no delete")
-            });
+
+            if (window.confirm("Deseja mesmo deletar?")){
+                deletePost(postId)
+                .then((result) => {
+                    document.location.reload(true);
+                }).catch((error) => {
+                    console.log("deu ruim no delete")
+                });
+            }
         })
     })
 }
