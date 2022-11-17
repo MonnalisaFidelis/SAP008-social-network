@@ -1,21 +1,19 @@
 import {
-  loginUser
+  loginUser,
 } from '../src/lib/index.js';
+
 import {
-  signInWithEmailAndPassword
-} from '../src/lib/exports.js';
+  signInWithEmailAndPassword,
+} from '../src/lib/firebase.js';
+
+jest.mock('../src/lib/firebase.js');
 
 describe('loginUser', () => {
-  it('a função deve permitir que o usuário faça login usando email e senha já cadastrados', () => {
+  it('confirma se está logando com e-mail e senha', () => {
     const email = 'uvapassa@gmail.com';
     const password = '123456';
     loginUser(email, password);
     expect(signInWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    /*expect(signInWithEmailAndPassword).toHaveBeenCalledWith({
-      currentUser: {
-        uid: '123',
-        displayName: 'nome',
-      },
-    }, email, password);*/
+    expect(signInWithEmailAndPassword).toHaveBeenCalledWith(undefined, email, password);
   });
 });

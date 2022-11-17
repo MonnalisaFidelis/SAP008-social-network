@@ -1,17 +1,20 @@
-import { getPosts, deletePost, likePost, editPost } from '../lib/index.js';
+import {
+  deletePost,
+  likePost,
+  editPost,
+} from '../lib/index.js';
 
 export default (posts) => {
-    console.log(posts);
-    const container = document.createElement("div");
-    container.setAttribute("class", "post-render");
-    const template = posts.map(post => {
-        return `
-            <div class="post">
-                <h4>@${post.name}</h4>
-                <p>${post.text}</p>
-                <div class="post-action">
-                    <div class="post-like">
-                        <!--<input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">-->
+  console.log(posts);
+  const container = document.createElement('div');
+  container.setAttribute('class', 'post-render');
+  const template = posts.map((post) => `
+    <div class="post">
+      <h4>@${post.name}</h4>
+      <p>${post.text}</p>
+        <div class="post-action">
+            <div class="post-like">
+                <!--<input type="checkbox" class="btn-like" id="btn-like" data-id="${post.id}" data-author="${post.author}">-->
                         <button type= "button"  class="btn-like" id="btn-like"><i class="fa-solid fa-heart" data-id="${post.id}" data-like="${post.like}"></i></button>
                         <span class="counter-like">${post.like}</span>
                     </div>
@@ -21,60 +24,57 @@ export default (posts) => {
                     </div>
                 </div>
             </div>
-        `;
-    }).join("");
+        `).join('');
 
-    container.innerHTML = template;
-    const postArea = document.getElementById('post-area');
-    postArea.innerHTML = "";
-    postArea.appendChild(container);
+  container.innerHTML = template;
+  const postArea = document.getElementById('post-area');
+  postArea.innerHTML = '';
+  postArea.appendChild(container);
 
-    const btnLike = document.querySelectorAll('.btn-like');
-    const btnEdit = document.querySelectorAll('.btn-edit');
-    const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
+  const btnLike = document.querySelectorAll('.btn-like');
+  const btnEdit = document.querySelectorAll('.btn-edit');
+  const btnDelete = document.querySelectorAll('.btn-delete'); // id é unico
 
-    btnLike.forEach((element) => {
-        element.addEventListener('click', (e) => {
-            const postId = e.target.dataset.id;
-            const postAuthor = e.target.dataset.author;
+  btnLike.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const postId = e.target.dataset.id;
 
-            likePost(postId)
-            .then((result) => {
-                document.location.reload(true);
-            }).catch((error) => {
-                console.log("deu ruim")
-            });
-        })
-    })
+      likePost(postId)
+        .then(() => {
+          document.location.reload(true);
+        }).catch(() => {
+          console.log('deu ruim');
+        });
+    });
+  });
 
-    //editar
-    btnEdit.forEach((element) => {
-        element.addEventListener('click', (e) => {
-            const postId = e.target.dataset.id;
-            const textEdit = prompt("Edite seu post")
+  // editar
+  btnEdit.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const postId = e.target.dataset.id;
+      const textEdit = prompt('Edite seu post');
 
-            editPost(postId, textEdit)
-            .then((result) => {
-                document.location.reload(true);
-            }).catch((error) => {
-                console.log("deu ruim no edit")
-            });
-        })
-    })
+      editPost(postId, textEdit)
+        .then(() => {
+          document.location.reload(true);
+        }).catch(() => {
+          console.log('deu ruim no edit');
+        });
+    });
+  });
 
-    //deletar
-    btnDelete.forEach((element) => {
-        element.addEventListener('click', (e) => {
-            const postId = e.target.dataset.id;
-
-            if (window.confirm("Deseja mesmo deletar?")){
-                deletePost(postId)
-                .then((result) => {
-                    document.location.reload(true);
-                }).catch((error) => {
-                    console.log("deu ruim no delete")
-                });
-            }
-        })
-    })
-}
+  // deletar
+  btnDelete.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const postId = e.target.dataset.id;
+      if (window.confirm('Deseja mesmo deletar?')) {
+        deletePost(postId)
+          .then(() => {
+            document.location.reload(true);
+          }).catch(() => {
+            console.log('deu ruim no delete');
+          });
+      }
+    });
+  });
+};

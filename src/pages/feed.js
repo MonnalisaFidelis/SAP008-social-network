@@ -1,10 +1,15 @@
 import post from '../components/post.js';
-import { createPost, getPosts, userStateChanged, userStateLogout } from '../lib/index.js';
+import {
+  createPost,
+  getPosts,
+  userStateChanged,
+  userStateLogout,
+} from '../lib/index.js';
 
 export default () => {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-    const template = `
+  const template = `
         <div class="feed-title">
             <h3>Feed</h3>
             <button id="btn-logout" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i></button>
@@ -22,34 +27,31 @@ export default () => {
             </div>
         </section>
     `;
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const btnLogout = container.querySelector('#btn-logout')
-    const textPost = container.querySelector('#text-post');
-    const btnPost = container.querySelector('#btn-post');
+  const btnLogout = container.querySelector('#btn-logout');
+  const textPost = container.querySelector('#text-post');
+  const btnPost = container.querySelector('#btn-post');
 
-
-    btnPost.addEventListener('click', async (e) => {
-        if(textPost.value === ''){
-            alert("Post vazio, por favor digite algo!")
-        }
-        else{
-            await createPost(textPost.value);
-            const posts = await getPosts();
-            post(posts)
-        }
-    })
-
-    async function listPosts() {
-        const posts = await getPosts();
-        post(posts)
+  btnPost.addEventListener('click', async () => {
+    if (textPost.value === '') {
+      alert('Post vazio, por favor digite algo!');
     }
+    await createPost(textPost.value);
+    const posts = await getPosts();
+    post(posts);
+  });
 
-    listPosts();
+  async function listPosts() {
+    const posts = await getPosts();
+    post(posts);
+  }
 
-    btnLogout.addEventListener('click', (e) => {
-        console.log("deslogou")
-        userStateLogout(userStateChanged);
-    })
-    return container;
+  listPosts();
+
+  btnLogout.addEventListener('click', () => {
+    console.log('deslogou');
+    userStateLogout(userStateChanged);
+  });
+  return container;
 };
