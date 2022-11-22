@@ -36,7 +36,7 @@ export async function getPosts() {
 // função de criação de usuário
 export function createUser(name, email, senha) {
   const auth = getAuth(app);
-  return createUserWithEmailAndPassword(auth, email, senha)
+  createUserWithEmailAndPassword(auth, email, senha)
     .then(() => updateProfile(auth.currentUser, {
       displayName: name,
     }));
