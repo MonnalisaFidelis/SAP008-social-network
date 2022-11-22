@@ -1,8 +1,8 @@
-import { createUser } from "../lib/index.js";
+import { createUser } from '../lib/index.js';
 
 export default () => {
-    const container = document.createElement('div');
-    const template = `
+  const container = document.createElement('div');
+  const template = `
         <section class="content">
             <div class= "create">  
                 <div class="title">
@@ -45,29 +45,26 @@ export default () => {
             </div>
         </section>  
     `;
-    container.innerHTML = template;
+  container.innerHTML = template;
 
-    const btn = container.querySelector("#btn-entrar")
-    const email = container.querySelector("#email")
-    const username = container.querySelector("#username")
-    const password = container.querySelector("#senha")
-    btn.addEventListener("click", (e) => {
-        e.preventDefault()
-        console.log("submeter o form")
-        console.log(email.value)
-        console.log(username.value)
-        console.log(password.value)
-        
-        createUser(username.value, email.value, password.value)
-            .then(user => {
-                console.log(user) 
-                alert("Seu cadastro foi realizado com sucesso!")
-            })
-            .catch((error) => {
-                //const errorCode = error.code;
-                //const errorMessage = error.message;
-                alert("Falha ao cadastrar")
-            })
-    })
-    return container;
-}
+  const btn = container.querySelector('#btn-entrar');
+  const email = container.querySelector('#email');
+  const username = container.querySelector('#username');
+  const password = container.querySelector('#senha');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('submeter o form');
+    console.log(email.value);
+    console.log(username.value);
+    console.log(password.value);
+    createUser(username.value, email.value, password.value)
+      .then((user) => {
+        console.log(user);
+        alert('Seu cadastro foi realizado com sucesso!');
+      })
+      .catch(() => {
+        alert('Falha ao cadastrar');
+      });
+  });
+  return container;
+};

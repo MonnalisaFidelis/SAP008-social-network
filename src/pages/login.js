@@ -1,9 +1,9 @@
-import { loginUser, loginGoogle } from "../lib/index.js";
+import { loginUser, loginGoogle } from '../lib/index.js';
 
 export default () => {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-    const template = `
+  const template = `
         <section class="content">
             <div class= "create">  
                 <div class="title">
@@ -37,34 +37,32 @@ export default () => {
             </div>
         </section> 
     `;
-    container.innerHTML = template;
-    const btnLogin = container.querySelector("#btn-entrar")
-    const email = container.querySelector("#email")
-    const password = container.querySelector("#senha")
-    const btnGoogle = container.querySelector("#btn-google")
+  container.innerHTML = template;
+  const btnLogin = container.querySelector('#btn-entrar');
+  const email = container.querySelector('#email');
+  const password = container.querySelector('#senha');
+  const btnGoogle = container.querySelector('#btn-google');
 
-    btnGoogle.addEventListener("click", (e) => {
-        e.preventDefault()
-        console.log("google ok")
-        loginGoogle()
-    })
+  btnGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('google ok');
+    loginGoogle();
+  });
 
-    btnLogin.addEventListener("click", (e) => {
-        e.preventDefault()
-        console.log(email.value)
-        console.log(password.value)
-        loginUser(email.value, password.value)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user)
-                location.hash = "#feed"
-            })
-            .catch((error) => {
-                alert("Email ou senha inválidos")
-                //const errorCode = error.code;
-                //const errorMessage = error.message;
-            });
-        
-    })
-    return container;
-}
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(email.value);
+    console.log(password.value);
+    loginUser(email.value, password.value)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        // eslint-disable-next-line no-restricted-globals
+        location.hash = '#feed';
+      })
+      .catch(() => {
+        alert('Email ou senha inválidos');
+      });
+  });
+  return container;
+};
